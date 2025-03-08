@@ -197,7 +197,7 @@ function drawDistanceLine(loc1, loc2) {
     ctx.beginPath();
     ctx.moveTo(screenX1, screenY1);
     ctx.lineTo(screenX2, screenY2);
-    ctx.strokeStyle = "yellow";
+    ctx.strokeStyle = "#a39c11";
     ctx.lineWidth = 3;
     ctx.stroke();
     ctx.closePath();
@@ -226,21 +226,31 @@ function drawDistanceLine(loc1, loc2) {
     ctx.fillText(measurement, midX, midY);
 }
 
+let xKeyPressed = false; // To track whether the X key is currently pressed
+
+// Detect when the X key is pressed
+document.addEventListener("keydown", (e) => {
+    if (e.key === "x") {
+        xKeyPressed = true;
+    }
+});
+
+// Detect when the X key is released
+document.addEventListener("keyup", (e) => {
+    if (e.key === "x") {
+        xKeyPressed = false;
+    }
+});
+
 // Handle clicking on locations
 canvas.addEventListener("click", (e) => {
-    if (!distanceMode) return; // Ignore clicks if not in distance mode
+    if (!distanceMode || !xKeyPressed) return; // Ignore click if not in distance mode or X key is not pressed
 
     const clickX = (e.clientX - offsetX) / scale;
     const clickY = (e.clientY - offsetY) / scale;
 
     // Store the clicked position
     selectedLocations.push({ x: clickX, y: clickY });
-
-    // Limit selection to two points
-    if (selectedLocations.length > 2) {
-        selectedLocations = []; // Reset selection if clicking again
-        distanceMode = false;   // Exit distance mode
-    }
 
     drawMap();
 });
