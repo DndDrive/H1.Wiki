@@ -1,73 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DndDrive Resources</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1d1f21;
-            color: #fff;
-            overflow: hidden;
-        }
-
-        header {
-            background-color: #222;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-around;
-            gap: 5px;
-            padding: 20px;
-        }
-
-        iframe {
-            border: 0px solid #444;
-            width: 39%;
-            height: 80vh;
-            border-radius: 0px;
-        }
-
-        footer {
-            background-color: #222;
-            color: #bbb;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>H1 Grossevache</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script/script.js"></script>
 </head>
+
 <body>
+    <div class="sidebar">
+        <a href="index.html">Grossevache</a>
+        <a href="Carte/index.html">Carte</a>
+        <a href="Wiki/index.html">Wiki</a>
 
-<header>
-    <h1>L'Île de Grossevache</h1>
-    <p>H1</p>
-</header>
+        <div class="eye-container">
+            <div class="eye">
+                <div class="pupil"></div>
+                <div class="blood-veins"></div>
+            </div>
+        </div>
 
-<div class="container">
-    <iframe src="map/map.html" title="D&D5 Guide"></iframe>
-    <iframe src="wiki.html"></iframe>
-</div>
+        <script>
+            const eye = document.querySelector('.eye');
+            const pupil = document.querySelector('.pupil');
+            const bloodVeins = document.querySelector('.blood-veins');
 
+            document.addEventListener('mousemove', (event) => {
+                // Get the mouse position relative to the eye container
+                const eyeRect = eye.getBoundingClientRect();
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                // Calculate the distance between the eye center and the mouse
+                const deltaX = mouseX - eyeCenterX;
+                const deltaY = mouseY - eyeCenterY;
+
+                // Set maximum range of pupil and eye rotation to prevent excessive movement
+                const maxRotation = 12;  // More dramatic rotation
+                const maxPupilMovement = 10;  // Larger pupil movement for more unsettling effect
+
+                // Calculate the angle between the center of the eye and the mouse
+                const angleX = Math.min(Math.max((deltaY / eyeRect.height) * maxRotation, -maxRotation), maxRotation);
+                const angleY = Math.min(Math.max(-(deltaX / eyeRect.width) * maxRotation, -maxRotation), maxRotation);
+
+                // Update the eye's rotation
+                eye.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+
+                // Move the pupil within a limited range
+                const pupilX = Math.min(Math.max((deltaX / eyeRect.width) * maxPupilMovement, -maxPupilMovement), maxPupilMovement);
+                const pupilY = Math.min(Math.max((deltaY / eyeRect.height) * maxPupilMovement, -maxPupilMovement), maxPupilMovement);
+                pupil.style.transform = `translate(-50%, -50%) translate(${pupilX}px, ${pupilY}px)`;
+
+                // Bloodshot veins effect (flickering random animation for extra scare)
+                if (Math.random() < 0.05) {
+                    bloodVeins.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                }
+            });
+        </script>
+    </div>
+    <header class="header">
+        H1 Grossevache
+        <div class="toggle-container">
+            <button class="toggle-button" onclick="toggleTheme()">Toggle Night Mode</button>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Grossevache</h2>
+            <p>Grossevache est une île mystérieuse entourée d'un épais brouillard qui la sépare du reste du monde. Ceux
+                qui s'aventurent trop loin dans le brouillard risquent de ne jamais revenir, perdus dans un labyrinthe
+                brumeux et hanté. L'île elle- même est un lieu de cauchemars, où le réel et le surnaturel se mêlent.
+                Grossevache est séparée en trois royaume : Les Plaines de la joie, Les Marécages de l’Ouest et Les
+                Contrés désolée du nord.</p>
+            <h3>Les Trois Royaumes</h3>
+            <h4>Les Plaines de la Joie</h4>
+            <p>Les Plaines de la Joie sont vastes et verdoyantes, couvertes de prairies fleuries et de collines douces.
+                Au premier regard, c'est un lieu idyllique où le soleil brille toujours et où les oiseaux chantent en
+                permanence cependant tout semble caché une nature bien plus sombre, tout semble trop beau, tout semble
+                faux. Les habitants des Plaines de la Joie vivent dans des villages pittoresques, toujours joyeux et
+                souriants. Cependant, leur bonheur semble forcé, comme s'ils étaient sous l'effet d'une magie puissante.
+                Les enfants rient et jouent, les adultes chantent et dansent, mais tout cela cache une réalité bien plus
+                sombre et inexpliquée.</p>
+            <h4>Les Marécages de l'Est</h4>
+            <p>Les Marécages de l’Ouest sont des terres humides et traîtres, où le sol est spongieux et l'air est rempli
+                d'une brume épaisse et stagnante. La végétation est dense et entremêlée, rendant la navigation difficile
+                et dangereuse. Les marécages abritent des créatures monstrueuses, des sorcières et des tribus nomades
+                qui ont appris à survivre dans ces conditions hostiles. Les tribus sont souvent en guerre les unes
+                contre les autres et contre les créatures des marécages.</p>
+            <h4>La Contrée Désolée du Nord</h4>
+            <p>La Contrée Désolée du Nord est une vaste étendue glaciale, balayée par des vents violents et recouverte
+                de neige et de glace. Le climat y est extrêmement rigoureux, et la survie est un défi constant. Aucune
+                créature vivante ne réside de façon permanente dans cette région. Cependant, des créatures de glace et
+                des esprits anciens rôdent dans ces terres. Les rares expéditions qui s'y aventurent sont souvent des
+                aventuriers en quête de trésors ou de connaissances oubliées.</p>
+            <h3>Le Brouillard</h3>
+            <p>De 6h à 18h, l'île est dans le plan matériel. De 18h à 6h, elle bascule dans le Shadowfell, une dimension
+                obscure et inquiétante.</p>
+        </section>
+    </main>
 </body>
+
 </html>
