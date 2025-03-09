@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H1 Grossevache</title>
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/tapouStyle.css">
     <script type="text/javascript" src="../script/script.js"></script>
 </head>
 
 <body style="background-color: black;">
     <div class="sidebar">
         <a href="../index.html">Grossevache</a>
-        <a href="index.html">Carte</a>
+        <a href="../carte/index.html">Carte</a>
         <a href="../Wiki/index.html">Wiki</a>
-        <a href="../tapouweb/index.html">Tapouweb</a>
+        <a href="index.html">Tapouweb</a>
 
         <div class="eye-container">
             <div class="eye">
@@ -27,10 +28,17 @@
     </div>
     <header class="header">
         H1 Grossevache
+
+        <div class="reload-container">
+            <button class="refresh-btn" onclick="reloadIframe()">
+                <span class="refresh-icon"></span> ⟳
+            </button>
+        </div>
     </header>
     <main>
         <div class="iframe-container">
-            <iframe src="map.html" class="map-iframe"></iframe>
+            <iframe src="https://dinde451.github.io/Tapouweb/src/index.html" id="tapouframe" class="map-iframe"></iframe>
+            <script src="../script/tapouFrame.js"></script>
         </div>
     </main>
 </body>

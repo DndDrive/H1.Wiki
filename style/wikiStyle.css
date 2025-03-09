@@ -1,0 +1,54 @@
+body.light-mode {
+    background-color: #fff; /* Light mode background */
+    color: #000;
+}
+
+header {
+    background-color: #222;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.content {
+    padding: 20px;
+    overflow: auto;
+}
+
+footer {
+    background-color: #222;
+    color: #bbb;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+ul li a {
+    color: #4e9af1;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Optional night mode styles for links in light mode */
+body.light-mode ul li a {
+    color: #000;
+}
