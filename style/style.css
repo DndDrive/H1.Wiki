@@ -4,9 +4,9 @@ body {
     color: #d4af37;
     margin: 0;
     padding: 0;
+    height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    height: 100%;
 }
 
 section {
