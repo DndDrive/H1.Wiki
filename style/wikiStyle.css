@@ -1,6 +1,7 @@
 body.light-mode {
     background-color: #fff; /* Light mode background */
     color: #000;
+    overflow: scroll;
 }
 
 header {
@@ -16,7 +17,6 @@ header h1 {
 
 .content {
     padding: 20px;
-    overflow: auto;
 }
 
 footer {

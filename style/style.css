@@ -5,8 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: scroll;
 }
 
 section {
@@ -192,23 +191,7 @@ main {
     }
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
 
-::-webkit-scrollbar-track {
-    background: #2c1b0d;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #8b5a2b;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #d4af37;
-}
 
 /* Container for the iframe */
 .iframe-container {
