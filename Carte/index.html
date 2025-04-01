@@ -9,7 +9,12 @@
     <script type="text/javascript" src="../script/script.js"></script>
     <style>
         body {
+            margin: 0;
             overflow: hidden;
+            background-image: url('Images/BG.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
         }
     </style>
 </head>
@@ -34,9 +39,8 @@
         H1 Grossevache
     </header>
     <main>
-        <div class="iframe-container">
-            <iframe src="map.html" class="map-iframe"></iframe>
-        </div>
+            <canvas id="mapCanvas"></canvas>
+            <script src="../script/map.js"></script>
     </main>
 </body>
 
