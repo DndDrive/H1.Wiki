@@ -9,9 +9,9 @@ body {
 }
 
 section {
-    margin-left: 50px;
+    margin-left: 230px;
     margin-right: 50px;
-    margin-top: 25px;
+    margin-top: 50px;
 }
 
 /* Sidebar Styles */
@@ -80,7 +80,7 @@ canvas {
     bottom: 0;
     width: 100%;
     height: 100%;
-  }
+}
 
 /* Toggle Button */
 .toggle-container {
@@ -134,10 +134,12 @@ canvas {
 
 /* Eye Styling */
 .eye {
-    width: 80px; /* Slightly larger for better realism */
+    width: 80px;
+    /* Slightly larger for better realism */
     height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle, #b30000 20%, #7a0000 70%, #3c0000 100%); /* More detailed gradient */
+    background: radial-gradient(circle, #b30000 20%, #7a0000 70%, #3c0000 100%);
+    /* More detailed gradient */
     position: relative;
     box-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.6);
     overflow: hidden;
@@ -146,7 +148,8 @@ canvas {
 
 /* Pupil */
 .pupil {
-    width: 25px; /* Larger pupil for more dramatic effect */
+    width: 25px;
+    /* Larger pupil for more dramatic effect */
     height: 25px;
     border-radius: 50%;
     background: black;
@@ -160,7 +163,8 @@ canvas {
 
 /* Mouse-following Pupil Movement */
 .eye:hover .pupil {
-    transform: translate(-50%, -50%) scale(1.1); /* Slight zoom on hover */
+    transform: translate(-50%, -50%) scale(1.1);
+    /* Slight zoom on hover */
 }
 
 .eye-container:hover .pupil {
@@ -186,6 +190,7 @@ canvas {
     0% {
         box-shadow: 0 0 3px #8b0000, 0 0 6px #8b0000, 0 0 10px #8b0000;
     }
+
     100% {
         box-shadow: 0 0 6px #8b0000, 0 0 12px #8b0000, 0 0 18px #8b0000;
     }
@@ -195,6 +200,7 @@ canvas {
     0% {
         box-shadow: 0 0 70px rgba(255, 0, 0, 1), 0 0 100px rgba(0, 0, 0, 0.6);
     }
+
     100% {
         box-shadow: 0 0 80px rgba(255, 50, 50, 1), 0 0 120px rgba(0, 0, 0, 0.8);
     }
