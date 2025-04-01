@@ -5,7 +5,12 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-//Mouse
+// Load the map image
+const mapImage = new Image();
+let MapNM = 1;
+let selectedPointName = "";
+
+//<(---- MOUSE/CURSOR ----)>
 let currentMousePos = { x: 0, y: 0 };
 
 canvas.addEventListener("mousemove", (e) => {
@@ -53,11 +58,33 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-// Load the map image
-const mapImage = new Image();
-let MapNM = 1;
-let selectedPointName = "";
+//DEBUG mouse pos
+canvas.addEventListener("mousemove", (e) => {
+    if (!drag) {
+        // Get mouse position relative to canvas
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
 
+        // Convert to map coordinates
+        const mapX = ((mouseX - offsetX) / scale).toFixed(2);
+        const mapY = ((mouseY - offsetY) / scale).toFixed(2);
+
+        drawMap(); // Redraw the map to clear previous coordinates
+
+        // Display mouse coordinates
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText(`Cursor: (${mapX}, ${mapY})`, 20, canvas.height - 30);
+    }
+
+    if (drag) {
+        offsetX = e.clientX - startX;
+        offsetY = e.clientY - startY;
+        drawMap();
+    }
+});
+
+//<(---- LOCATIONS/POINTS ----)>
 const locations1 = [
     { name: "Grandarbre", x: 2071, y: 2600, radius: 10 },
     { name: "Grandarbre, l'arbre des légendes", x: 2192, y: 2565, radius: 10 },
@@ -131,6 +158,7 @@ function changeMap() {
     updateMap(); // Update the map image when MapNM changes
 };
 
+//<(---- DRAW MAP ----)>
 // Initial map position and scale
 let scale = 0.3;
 let offsetX = 100, offsetY = -300;
@@ -138,32 +166,6 @@ let drag = false, startX, startY;
 
 let selectedLocations = []; // Store clicked locations for distance
 let distanceMode = false;   // Toggle mode
-
-//DEBUG mouse pos
-canvas.addEventListener("mousemove", (e) => {
-    if (!drag) {
-        // Get mouse position relative to canvas
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        // Convert to map coordinates
-        const mapX = ((mouseX - offsetX) / scale).toFixed(2);
-        const mapY = ((mouseY - offsetY) / scale).toFixed(2);
-
-        drawMap(); // Redraw the map to clear previous coordinates
-
-        // Display mouse coordinates
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "white";
-        ctx.fillText(`Cursor: (${mapX}, ${mapY})`, 20, canvas.height - 30);
-    }
-
-    if (drag) {
-        offsetX = e.clientX - startX;
-        offsetY = e.clientY - startY;
-        drawMap();
-    }
-});
 
 // Function to draw the map and locations
 function drawMap() {
@@ -209,15 +211,15 @@ function drawMap() {
     }
 }
 
+//<(---- DISTANCE MODE ----)>
 // Calculate Euclidean distance
 function calculateDistance(loc1, loc2) {
     const dx = loc2.x - loc1.x;
     const dy = loc2.y - loc1.y;
     const distancePixels = Math.sqrt(dx * dx + dy * dy);
 
-    // Convert to world units (adjust conversionFactor if needed)
     const conversionFactor = 1;
-    let mapMathRule;  // Use let so we can change it based on MapNM
+    let mapMathRule;
 
     // Switch mapMathRule based on the current map (MapNM)
     if (MapNM === 1) {
@@ -301,7 +303,7 @@ canvas.addEventListener("click", (e) => {
     drawMap();
 });
 
-
+//<(---- BASICS ----)>
 // Handle panning
 canvas.addEventListener("mousedown", (e) => {
     drag = true;

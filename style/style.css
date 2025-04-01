@@ -200,7 +200,6 @@ main {
     justify-content: flex-start;
     height: 92vh; /* Subtract header height */
     width: 100%; /* Ensure the container spans the full width */
-    padding-top: 2vh; /* Optional: if you want to add a fixed header or space above the iframe */
 }
 
 /* Iframe styling */
@@ -208,4 +207,5 @@ main {
     width: 100%;   /* Fill full width of its container */
     height: 100%;  /* Fill the height of the container */
     border: none;  /* Optional: removes the iframe border */
+    float: right;
 }
