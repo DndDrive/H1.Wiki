@@ -97,7 +97,7 @@ volonté.
 **INT** 20 (+5) **SAG** 20 (+5) **CHA** 20 (+5)
 **Vitesse** 50 pieds vol
 
-### Pacte avec le casque
+#### Pacte avec le casque
 Le casque peut gagner plus d’influence sur les joueur si jamais ils prononces la phrase : « je me donne a vous. » Une fois que les PJ ont dit la phrase le casque du blaireau peut effectuer certaines taches a la demande du PJ. 
 
 Pour les convaincre d’effectuer certaines tache il peut leurs apparaitre sous la forme de diffèrent PNJ. A la demande des PJ il peut : 
