@@ -6,7 +6,7 @@ body {
 
 #iframe-container {
     width: calc(100hv - 230px);
-    height: 90.6vh;
+    height: 100%;
     border: 1px solid #ccc;
     display: flex;
     flex-direction: column;
@@ -86,4 +86,26 @@ iframe {
 /* Glowing effect on hover */
 .refresh-btn:hover .refresh-icon {
     animation: icon-glow 1s infinite alternate;
+}
+
+/* Container for the iframe */
+.iframe-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    left: 240;
+    top: 49px;
+    bottom: 0;
+    right: 0;
+    height: 1calc(100% - 28px); /* Subtract header height */
+    width: calc(100% - 220px); /* Ensure the container spans the full width */
+    padding-top: 2vh; /* Optional: if you want to add a fixed header or space above the iframe */
+}
+ 
+/* Iframe styling */
+.map-iframe {
+    width: 100%;   /* Fill full width of its container */
+    height: 100%;  /* Fill the height of the container */
+    border: none;  /* Optional: removes the iframe border */
 }

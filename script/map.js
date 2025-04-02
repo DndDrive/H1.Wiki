@@ -1,3 +1,4 @@
+//!<(---- CANVAS SETTINGS ----)>
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -5,19 +6,18 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-//Mouse
+//!<(---- MOUSE ----)>
 let currentMousePos = { x: 0, y: 0 };
 
 canvas.addEventListener("mousemove", (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    // If not dragging, update the debug info
     if (!drag) {
-        // Convert to map coordinates (as numbers)
-        const mapX = (mouseX - offsetX) / scale;
-        const mapY = (mouseY - offsetY) / scale;
+        // Get mouse position relative to canvas
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        // Convert to map coordinates
+        const mapX = ((mouseX - offsetX) / scale).toFixed(2);
+        const mapY = ((mouseY - offsetY) / scale).toFixed(2);
 
         // If in distance mode and one point is selected, update current mouse position
         if (distanceMode && selectedLocations.length === 1) {
@@ -27,10 +27,10 @@ canvas.addEventListener("mousemove", (e) => {
 
         drawMap(); // Redraw the map to clear previous coordinates
 
-        // Display mouse coordinates (converted to strings for display)
+        // Display mouse coordinates
         ctx.font = "16px Arial";
         ctx.fillStyle = "white";
-        ctx.fillText(`Cursor: (${mapX.toFixed(2)}, ${mapY.toFixed(2)})`, 20, canvas.height - 30);
+        ctx.fillText(`Cursor: (${mapX}, ${mapY})`, 230, canvas.height - 10);
     }
 
     if (drag) {
@@ -40,19 +40,7 @@ canvas.addEventListener("mousemove", (e) => {
     }
 });
 
-// Change cursor when Alt is pressed
-document.addEventListener("keydown", (e) => {
-    if (e.altKey) {
-        canvas.style.cursor = "crosshair"; // Precision cursor
-    }
-});
-
-document.addEventListener("keyup", (e) => {
-    if (!e.altKey) {
-        canvas.style.cursor = "default"; // Default cursor
-    }
-});
-
+//!<(---- MAP ----)>
 // Load the map image
 const mapImage = new Image();
 let MapNM = 1;
@@ -96,40 +84,35 @@ const locations3 = [
     { name: "La contrée désolée du nord", x: 428, y: 329, radius: 100 }
 ];
 
-
-// Function to change the map image based on MapNM
+//Change the map based on the seleccted point
 function updateMap() {
     if (selectedPointName === "Grandarbre") {
         MapNM = 2;
-    } else if (selectedPointName === "Grosgras") {
+    } else if (selectedPointName === "Grosgras" || selectedPointName === "Petitîle") {
         MapNM = 3;
+    } else if (selectedPointName === "Les plaines de la joi" || selectedPointName === "La contrée désolée du nord") {
+        MapNM = 1;
     }
-    if (MapNM === 1) {
-        mapImage.src = "Images/map.png";
-        locations = locations1;
-    } else if (MapNM === 2) {
-        mapImage.src = "Images/map2.png";
-        locations = locations2;
-    } else {
-        mapImage.src = "Images/map3.png";
-        locations = locations3;
+
+    // Update map image and locations based on MapNM
+    switch (MapNM) {
+        case 1:
+            mapImage.src = "Images/map.png";
+            locations = locations1;
+            break;
+        case 2:
+            mapImage.src = "Images/map2.png";
+            locations = locations2;
+            break;
+        case 3:
+            mapImage.src = "Images/map3.png";
+            locations = locations3;
+            break;
     }
 }
 
 // Initial map load
 updateMap();
-
-function changeMap() {
-    const locations = locations1;
-    if (selectedPointName == "Grandarbre") {
-        MapNM = 2;
-    } else if (selectedPointName == "Petitîle") {
-        MapNM = 3;
-    } else if (selectedLocations == "Les plaines de la joi" || "La contrée désolée du nord") {
-        MapNM = 1;
-    }
-    updateMap(); // Update the map image when MapNM changes
-};
 
 // Initial map position and scale
 let scale = 0.3;
@@ -138,32 +121,6 @@ let drag = false, startX, startY;
 
 let selectedLocations = []; // Store clicked locations for distance
 let distanceMode = false;   // Toggle mode
-
-//DEBUG mouse pos
-canvas.addEventListener("mousemove", (e) => {
-    if (!drag) {
-        // Get mouse position relative to canvas
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        // Convert to map coordinates
-        const mapX = ((mouseX - offsetX) / scale).toFixed(2);
-        const mapY = ((mouseY - offsetY) / scale).toFixed(2);
-
-        drawMap(); // Redraw the map to clear previous coordinates
-
-        // Display mouse coordinates
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "white";
-        ctx.fillText(`Cursor: (${mapX}, ${mapY})`, 230, canvas.height - 10);
-    }
-
-    if (drag) {
-        offsetX = e.clientX - startX;
-        offsetY = e.clientY - startY;
-        drawMap();
-    }
-});
 
 // Function to draw the map and locations
 function drawMap() {
@@ -209,6 +166,7 @@ function drawMap() {
     }
 }
 
+//!<(---- DISTANCE MODE ----)>
 // Calculate Euclidean distance
 function calculateDistance(loc1, loc2) {
     const dx = loc2.x - loc1.x;
@@ -217,8 +175,10 @@ function calculateDistance(loc1, loc2) {
 
     // Convert to world units (adjust conversionFactor if needed)
     const conversionFactor = 1;
-    let mapMathRule;  // Use let so we can change it based on MapNM
+    let mapMathRule;
 
+    //* The math rule is the maths that will convert the units to miles.
+    //*if not set right, the Island will not have the right size.
     // Switch mapMathRule based on the current map (MapNM)
     if (MapNM === 1) {
         mapMathRule = 21;
@@ -288,6 +248,7 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
+//!<(---- KEYBINDS ----)>
 // Handle clicking on locations
 canvas.addEventListener("click", (e) => {
     if (!distanceMode || !xKeyPressed) return; // Ignore click if not in distance mode or X key is not pressed
@@ -300,7 +261,6 @@ canvas.addEventListener("click", (e) => {
 
     drawMap();
 });
-
 
 // Handle panning
 canvas.addEventListener("mousedown", (e) => {
@@ -315,31 +275,24 @@ canvas.addEventListener("mousemove", (e) => {
     offsetY = e.clientY - startY;
     drawMap();
 });
-
 canvas.addEventListener("mouseup", () => { drag = false; });
 
 // Handle zooming
 canvas.addEventListener("wheel", (e) => {
-
     let zoomFactor = 1.1;
     let scaleAmount = e.deltaY < 0 ? zoomFactor : 1 / zoomFactor;
-
     // Get mouse position relative to canvas
     const mouseX = e.clientX;
     const mouseY = e.clientY;
-
     // Convert mouse position to map coordinates before zoom
     const mapX = (mouseX - offsetX) / scale;
     const mapY = (mouseY - offsetY) / scale;
-
     // Apply new scale
     scale *= scaleAmount;
     scale = Math.max(0.1, Math.min(scale, 3)); // Limit zoom levels
-
     // Adjust offsetX and offsetY to keep mouse centered
     offsetX = mouseX - mapX * scale;
     offsetY = mouseY - mapY * scale;
-
     drawMap();
 });
 
@@ -387,7 +340,7 @@ canvas.addEventListener("click", (event) => {
         if (Math.sqrt(dx * dx + dy * dy) <= loc.radius && !distanceMode) {
             selectedPointName = loc.name;
             console.log("Selected Point:", selectedPointName);
-            changeMap();
+            updateMap();
         }
     });
 });

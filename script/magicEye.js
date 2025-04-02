@@ -1,7 +1,9 @@
+//!<(---- VARIABLES ----)>
 const eye = document.querySelector('.eye');
 const pupil = document.querySelector('.pupil');
 const bloodVeins = document.querySelector('.blood-veins');
 
+//!<(---- MAGIC EYE ----)>
 document.addEventListener('mousemove', (event) => {
     // Get the mouse position relative to the eye container
     const eyeRect = eye.getBoundingClientRect();
