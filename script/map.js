@@ -88,7 +88,7 @@ const locations3 = [
 function updateMap() {
     if (selectedPointName === "Grandarbre") {
         MapNM = 2;
-    } else if (selectedPointName === "Grosgras" || selectedPointName === "Petitîle") {
+    } else if (selectedPointName === "Grosgras") {
         MapNM = 3;
     } else if (selectedPointName === "Les plaines de la joi" || selectedPointName === "La contrée désolée du nord") {
         MapNM = 1;
