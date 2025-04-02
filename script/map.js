@@ -64,7 +64,8 @@ const locations1 = [
     { name: "Les ruines de l'ancienes cité", x: 1924, y: 806, radius: 10 },
     { name: "La grotte des murmures", x: 2842, y: 690, radius: 10 },
     { name: "La maison sur le lac", x: 2803, y: 1038, radius: 10 },
-    { name: "Le donjon de l'ordre des pierres du temps", x: 2802, y: 1216, radius: 10 }
+    { name: "Le donjon de l'ordre des pierres du temps", x: 2802, y: 1216, radius: 10 },
+    { name: "Le Passage", x: 407, y: 2181, radius: 10 }
 ];
 
 const locations2 = [
@@ -84,12 +85,27 @@ const locations3 = [
     { name: "La contrée désolée du nord", x: 428, y: 329, radius: 100 }
 ];
 
+const locations4 = [
+    { name: "Grandarbre", x: 2071, y: 2600, radius: 10 },
+    { name: "Grandarbre, l'arbre des légendes", x: 2192, y: 2565, radius: 10 },
+    { name: "Atelier de Gaspard", x: 2169, y: 2670, radius: 10 },
+    { name: "Petitîle", x: 1638, y: 1677, radius: 10 },
+    { name: "Maisonette de Hilda", x: 1702, y: 1725, radius: 10 },
+    { name: "Le Passage", x: 407, y: 2181, radius: 10 }
+];
+
 //Change the map based on the seleccted point
 function updateMap() {
     if (selectedPointName === "Grandarbre") {
         MapNM = 2;
     } else if (selectedPointName === "Grosgras") {
         MapNM = 3;
+    } else if (selectedPointName === "Le Passage") {
+        if (MapNM == "1") {
+        MapNM = 4;
+        } else {
+        MapNM = 1;
+        }
     } else if (selectedPointName === "Les plaines de la joi" || selectedPointName === "La contrée désolée du nord") {
         MapNM = 1;
     }
@@ -107,6 +123,10 @@ function updateMap() {
         case 3:
             mapImage.src = "Images/map3.png";
             locations = locations3;
+            break;
+        case 4:
+            mapImage.src = "Images/map4.png";
+            locations = locations4;
             break;
     }
 }
