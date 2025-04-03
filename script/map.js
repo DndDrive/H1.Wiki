@@ -10,7 +10,6 @@ canvas.height = window.innerHeight;
 let currentMousePos = { x: 0, y: 0 };
 
 canvas.addEventListener("mousemove", (e) => {
-    if (!drag) {
         // Get mouse position relative to canvas
         const mouseX = e.clientX;
         const mouseY = e.clientY;
@@ -31,7 +30,6 @@ canvas.addEventListener("mousemove", (e) => {
         ctx.font = "16px Arial";
         ctx.fillStyle = "white";
         ctx.fillText(`Cursor: (${mapX}, ${mapY})`, 230, canvas.height - 10);
-    }
 
     if (drag) {
         offsetX = e.clientX - startX;
@@ -87,10 +85,9 @@ const locations3 = [
 
 const locations4 = [
     { name: "Grandarbre", x: 2071, y: 2600, radius: 10 },
-    { name: "Grandarbre, l'arbre des légendes", x: 2192, y: 2565, radius: 10 },
-    { name: "Atelier de Gaspard", x: 2169, y: 2670, radius: 10 },
+    { name: "La Ville des Boiseux", x: 2192, y: 2565, radius: 10 },
+    { name: "La chambre de la douleur", x: 2169, y: 2670, radius: 10 },
     { name: "Petitîle", x: 1638, y: 1677, radius: 10 },
-    { name: "Maisonette de Hilda", x: 1702, y: 1725, radius: 10 },
     { name: "Le Passage", x: 407, y: 2181, radius: 10 }
 ];
 
