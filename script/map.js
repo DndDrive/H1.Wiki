@@ -62,8 +62,8 @@ const locations1 = [
     { name: "Les ruines de l'ancienes cité", x: 1924, y: 806, radius: 10 },
     { name: "La grotte des murmures", x: 2842, y: 690, radius: 10 },
     { name: "La maison sur le lac", x: 2803, y: 1038, radius: 10 },
-    { name: "Le donjon de l'ordre des pierres du temps", x: 2802, y: 1216, radius: 10 },
-    { name: "Le Passage", x: 407, y: 2181, radius: 10 }
+    { name: "Le donjon de l'ordre des pierres du temps", x: 2802, y: 1216, radius: 10 }
+   // { name: "Le Passage", x: 407, y: 2181, radius: 10 }
 ];
 
 const locations2 = [
