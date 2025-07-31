@@ -1,7 +1,3 @@
-# Grossevache
-Grossevache est une île mystérieuse entourée d'un épais brouillard qui la sépare du reste du monde. Ceux qui s'aventurent trop loin dans le
-brouillard risquent de ne jamais revenir, perdus dans un labyrinthe brumeux et hanté. L'île elle- même est un lieu de cauchemars, où le réel et le surnaturel se mêlent. Grossevache est séparée en trois royaume : Les Plaines de la joie, Les Marécages de l’Ouest et Les Contrés désolée du nord.
-
 ## Les Plaines de la Joie
 Les Plaines de la Joie sont vastes et verdoyantes, couvertes de prairies fleuries et de collines douces. Au premier regard, c'est un lieu idyllique où le soleil brille toujours et où les oiseaux chantent en permanence cependant tout semble caché une nature bien plus sombre, tout semble trop beau, tout semble faux.
 

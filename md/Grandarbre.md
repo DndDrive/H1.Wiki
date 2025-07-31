@@ -87,7 +87,7 @@ Galeb le Duhr possède une force colossale et une aptitude unique à animer les 
 |Château Volant | 1 250 000 po | 5 ans|
 
 ## Eugène
-Si Eugène est libéré du donjon et qu'il reste en bons termes avec les PJ, il choisit de s'installer à l'Auberge de Grandarbre. Là, il propose ses talents aux aventuriers. 
+Si Euquidas 7 (qui utilise le nom Eugène) est libéré du donjon de l'ordre des pierres du temps et qu'il reste en bons termes avec les PJ, il choisit de s'installer à l'Auberge de Grandarbre. Là, il propose ses talents aux aventuriers.
 
 |Sorts | Prix | Max\jours|
 |------|------|----------|

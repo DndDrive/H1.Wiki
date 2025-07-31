@@ -1,4 +1,3 @@
-# PNJ
 ## Peppino
 Au centre de la pièce, sur une grande table de métal rouillé, repose une marionnette de femme. Ses vêtements colorés sont fanés par le temps, et sa peau de porcelaine est craquelée par endroits. Au-dessus d'elle, un vieillard obèse, vêtu de guenilles poussiéreuses, est penché, un pinceau à la main. Il applique méticuleusement du vernis sur la marionnette, ignorant totalement la présence des PJ. Peppino, comme il est appelé, est une créature difforme, créée autrefois par le mage du palais pour fabriquer des objets et entretenir ses créations.
 
