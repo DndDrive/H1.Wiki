@@ -1,24 +1,96 @@
 /* Global Reset & Base Styles */
 body {
-    background-color: #1a1a1a;
-    color: #d4af37;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: scroll;
 }
 
+/* Text Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Uncial Antiqua', serif;
+}
+
+h1 {
+    color: #fab387;
+}
+
+h2 {
+    color: #fab387;
+}
+
+h3 {
+    color: #eba0ac;
+}
+
+h4 {
+    color: #f9e2af;
+}
+
+/* tables */
+table {
+    width: 40%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #1e1e2e;
+    color: #f9e2af;
+    border: 2px solid #fab387;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #fab387;
+    color: #1e1e2e;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #2e2e3e;
+}
+
+tr:nth-child(odd) {
+    background-color: #242434;
+}
+
+tr:hover {
+    background-color: #eba0ac;
+    color: #1e1e2e;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+caption {
+    caption-side: top;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #fab387;
+}
+
+/* Section Layout */
 section {
-    margin-left: 50px;
+    margin-left: 230px;
     margin-right: 50px;
-    margin-top: 25px;
+    margin-top: 50px;
 }
 
 /* Sidebar Styles */
 .sidebar {
     width: 220px;
     height: 100vh;
-    background: linear-gradient(to bottom, #251c0a, #081108);
+    background: #11111b;
     padding-top: 20px;
     position: fixed;
     left: 0;
@@ -26,22 +98,21 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-right: 4px solid #8b5a2b;
+    border-right: 4px solid #fe640b;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.7);
 }
 
 .sidebar a {
-    color: #d4af37;
+    color: #cdd6f4;
     text-decoration: none;
     font-size: 1.3rem;
     margin: 15px 0;
     padding: 10px;
-    border-bottom: 1px solid #7a9c4c;
     transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .sidebar a:hover {
-    color: #ffdd70;
+    color: #fe640b;
     border-radius: 5px;
     text-shadow: 0 0 15px #ffdd70, 0 0 30px #ffdd70, 0 0 45px #ffdd70;
 }
@@ -52,160 +123,32 @@ section {
     top: 0;
     left: 220px;
     width: calc(100% - 220px);
-    height: 5vh;
+    height: 28px;
     padding: 15px;
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #d4af37;
-    background-color: #251c0a;
-    border-bottom: 4px solid #8b5a2b;
+    color: #fe640b;
+    background-color: #11111b;
+    border-bottom: 4px solid #fe640b;
     z-index: 2;
 }
 
 /* Main Content */
 main {
-    margin-left: 220px;
-    padding-top: 60px;
+    left: 220px;
+    top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
 }
 
-/* Toggle Button */
-.toggle-container {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-}
-
-.toggle-button {
-    padding: 8px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    border: 2px solid #8b5a2b;
-    background-color: #d4af37;
-    color: black;
-    font-weight: bold;
-    font-family: 'Uncial Antiqua', serif;
-    border-radius: 5px;
-    transition: 0.3s ease-in-out;
-}
-
-.toggle-button:hover {
-    background: #8b5a2b;
-    color: white;
-}
-
-/* Light Mode */
-.light-mode {
-    background-color: #f5f5f5;
-    color: black;
-}
-
-.light-mode .sidebar {
-    background: linear-gradient(to bottom, #604020, #3b2314);
-}
-
-.light-mode .header {
-    background-color: #d4af37;
-    color: #3b2314;
-}
-
-/* Eye Container */
-.eye-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Eye Styling */
-.eye {
-    width: 80px; /* Slightly larger for better realism */
-    height: 80px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #b30000 20%, #7a0000 70%, #3c0000 100%); /* More detailed gradient */
-    position: relative;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    animation: eerie-glow 3s infinite alternate ease-in-out;
-}
-
-/* Pupil */
-.pupil {
-    width: 25px; /* Larger pupil for more dramatic effect */
-    height: 25px;
-    border-radius: 50%;
-    background: black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 1), 0 0 25px rgba(255, 0, 0, 0.6);
-    transition: all 0.1s ease;
-}
-
-/* Mouse-following Pupil Movement */
-.eye:hover .pupil {
-    transform: translate(-50%, -50%) scale(1.1); /* Slight zoom on hover */
-}
-
-.eye-container:hover .pupil {
-    transition: transform 0.1s ease-out;
-}
-
-/* Bloodshot Veins */
-.blood-veins {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+canvas {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
-    border-radius: 50%;
-    box-shadow: 0 0 3px #8b0000, 0 0 6px #8b0000, 0 0 10px #8b0000;
-    z-index: -1;
-    animation: bloodshot 2s infinite alternate ease-in-out;
-}
-
-/* Animations */
-@keyframes bloodshot {
-    0% {
-        box-shadow: 0 0 3px #8b0000, 0 0 6px #8b0000, 0 0 10px #8b0000;
-    }
-    100% {
-        box-shadow: 0 0 6px #8b0000, 0 0 12px #8b0000, 0 0 18px #8b0000;
-    }
-}
-
-@keyframes eerie-glow {
-    0% {
-        box-shadow: 0 0 70px rgba(255, 0, 0, 1), 0 0 100px rgba(0, 0, 0, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 80px rgba(255, 50, 50, 1), 0 0 120px rgba(0, 0, 0, 0.8);
-    }
-}
-
-
-
-/* Container for the iframe */
-.iframe-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 92vh; /* Subtract header height */
-    width: 100%; /* Ensure the container spans the full width */
-    padding-top: 2vh; /* Optional: if you want to add a fixed header or space above the iframe */
-}
-
-/* Iframe styling */
-.map-iframe {
-    width: 100%;   /* Fill full width of its container */
-    height: 100%;  /* Fill the height of the container */
-    border: none;  /* Optional: removes the iframe border */
 }
